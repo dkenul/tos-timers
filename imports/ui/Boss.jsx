@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 export default class Boss extends Component {
-  render() {
+  render () {
     return (
       <li>{this.props.boss.name}</li>
     );

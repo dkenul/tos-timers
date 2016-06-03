@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Bosses } from '../api/bosses.js';
+import Header from './header.jsx'
 import Boss from './boss.jsx';
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+        <Header />
         <h1>Hi pls work</h1>
 
         <ul>
