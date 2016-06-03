@@ -131,12 +131,11 @@ form {
 #search:focus {
   background-image: url();
   background-color: #eef1f4;
-
 }
 
 .bosses > li {
   margin-top: 20px;
-  height: 150px;
+  min-height: 150px;
   background: #a8c0aa;
   border-radius: 10px;
 
@@ -167,10 +166,6 @@ form {
 
 .boss > img, .boss > .name {
   float: left;
-}
-
-.dropdown {
-  display: none;
 }
 
 .noselect {
