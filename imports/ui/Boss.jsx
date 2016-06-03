@@ -5,7 +5,7 @@ export default class Boss extends Component {
     return (
       <li>
         <div className="boss group">
-          <img src="assets/images/earth_archon.jpg" alt="" />
+          <img src="/images/earth_archon.jpg" alt="" />
           <div className="name">{this.props.boss.name}</div>
         </div>
         <ul className="dropdown">

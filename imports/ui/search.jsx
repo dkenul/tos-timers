@@ -37,7 +37,13 @@ export default class Search extends Component {
   render () {
     return (
       <form className="group">
-        <input type="text" name="search" id="search" autocomplete="off" />
+        <input
+          type="text"
+          name="search"
+          id="search"
+          autocomplete="off"
+          onChange={this.props.filterBosses}
+        />
         {this.addCheckboxes()}
       </form>
     )
