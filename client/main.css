@@ -124,6 +124,7 @@ form {
 
 .bosses > li {
   margin-top: 20px;
+  height: 150px;
   background: #a8c0aa;
   border-radius: 10px;
 

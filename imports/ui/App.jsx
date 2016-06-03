@@ -1,37 +1,14 @@
 import React, { Component, PropTypes } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
-import { Bosses } from '../api/bosses.js';
 import Header from './header.jsx'
 import Content from './content.jsx'
-import Boss from './boss.jsx';
 
-class App extends Component {
-  putBosses() {
-    return this.props.bosses.map((boss) => {
-      return <Boss key={boss._id} boss={boss} />
-    });
-  }
-
+export default class App extends Component {
   render() {
     return (
       <div className="container">
         <Header />
         <Content />
-
-        <ul>
-          {this.putBosses()}
-        </ul>
       </div>
     );
   }
 }
-
-App.propTypes = {
-  bosses: PropTypes.array.isRequired
-};
-
-export default createContainer(() => {
-  return {
-    bosses: Bosses.find({}).fetch()
-  };
-}, App);
