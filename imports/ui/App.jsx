@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Bosses } from '../api/bosses.js';
-import Boss from './Boss.jsx';
+import Boss from './boss.jsx';
 
 class App extends Component {
   putBosses() {
