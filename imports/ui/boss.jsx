@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
+import Dropdown from './dropdown.jsx'
 
 export default class Boss extends Component {
   constructor () {
@@ -13,23 +14,16 @@ export default class Boss extends Component {
   }
 
   render () {
-    let dropdown =
-      <ul className="dropdown">
-        <li className="channel">1</li>
-        <li className="channel">2</li>
-        <li className="channel">3</li>
-        <li className="channel">4</li>
-        <li className="channel">5</li>
-      </ul>
+    let boss = this.props.boss
 
     return (
       <li>
         <div className="boss group" onClick={this.toggleDropdown.bind(this)}>
-          <img src="/images/earth_archon.jpg" alt="" />
-          <div className="name">{this.props.boss.name}</div>
+          <img src={"/images/bosses/" + boss.img} alt="" />
+          <div className="name">{boss.name}</div>
         </div>
 
-        {this.state.showDropdown ? dropdown : ""}
+        {this.state.showDropdown ? <Dropdown channels={boss.channels} /> : ""}
       </li>
     )
   }
