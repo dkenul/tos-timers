@@ -168,6 +168,27 @@ form {
   float: left;
 }
 
+.dropdown {
+  padding-bottom: 10px;
+}
+
+.channel {
+  height: 50px;
+  width: 860px;
+  margin: 0 auto;
+  background: #cfcfcf;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+.channel > div {
+  float: left;
+  padding-top: 15px;
+  padding-left: 10px;
+}
+
+/* HELPER */
+
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
