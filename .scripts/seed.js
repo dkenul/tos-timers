@@ -20,7 +20,7 @@ for (var i = 0; i < names.length; i++) {
 
       for (var j = 0; j < numChannels[i]; j++) {
         result.push({
-          status: 2,
+          status: 'down',
           lastKilled: Date.now()
         });
       }

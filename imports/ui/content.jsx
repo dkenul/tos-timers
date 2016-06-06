@@ -14,22 +14,18 @@ export default class Content extends Component {
 
   componentWillReceiveProps(props) {
     this.setState({
-      filteredBosses: props.bosses.map((boss) => (
-        <Boss key={boss._id} boss={boss} />
-      ))
+      filteredBosses: props.bosses
     })
   }
 
-  filterBosses (e) {
+  filterByName (e) {
     let seg = e.target.value.toLowerCase()
     this.setState({
       filteredBosses: this.props.bosses.reduce((list, boss) => {
         let query = boss.name.toLowerCase()
 
         if (query.includes(seg)) {
-          list.push(
-            <Boss key={boss._id} boss={boss} />
-          )
+          list.push(boss)
         }
 
         return list
@@ -37,13 +33,29 @@ export default class Content extends Component {
     })
   }
 
+  filterByStatus (status, e) {
+    this.setState({
+      filteredBosses: this.state.filteredBosses.reduce((list, boss) => {
+        if (boss.channels.find((channel) => channel.status === status)) {
+          list.push(boss)
+        }
+      }, [])
+    })
+  }
+
+  putBosses () {
+    return this.state.filteredBosses.map((boss) => (
+      <Boss key={boss._id} boss={boss} />
+    ))
+  }
+
   render () {
     return (
       <section>
         <div className="wrapper">
-          <Search filterBosses={this.filterBosses.bind(this)} />
+          <Search filterByName={this.filterByName.bind(this)} />
           <ul className="bosses noselect">
-            {this.state.filteredBosses}
+            {this.putBosses()}
           </ul>
         </div>
       </section>

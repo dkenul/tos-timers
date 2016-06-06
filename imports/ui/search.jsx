@@ -42,7 +42,7 @@ export default class Search extends Component {
           name="search"
           id="search"
           autoComplete="off"
-          onChange={this.props.filterBosses}
+          onChange={this.props.filterByName}
         />
         {this.addCheckboxes()}
       </form>
