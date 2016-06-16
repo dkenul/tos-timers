@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReportOptions from './report-options.jsx'
 
 export default class Channel extends Component {
   constructor () {
@@ -44,9 +45,13 @@ export default class Channel extends Component {
   render () {
     return (
       <li className="channel group">
-        <div>Ch. {this.props.number}</div>
+        <div>Ch. {this.props.number + 1}</div>
         <div>Cooldown: {this.props.cooldown}</div>
         <div>Status: {this.renderStatus()}</div>
+        <ReportOptions
+          bossId={this.props.bossId}
+          channelNumber={this.props.number}
+        />
       </li>
     )
   }

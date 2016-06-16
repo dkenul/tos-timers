@@ -19,6 +19,7 @@ export default class Boss extends Component {
       <Dropdown
         channels={boss.channels}
         cooldown={boss.cooldown}
+        bossId={boss._id}
       />
       : ""
   }

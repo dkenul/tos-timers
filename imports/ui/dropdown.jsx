@@ -6,11 +6,12 @@ export default class Dropdown extends Component {
     return this.props.channels.map((channel, i) => {
       return (
         <Channel
-          key={i + 1}
-          number={i + 1}
+          key={i}
+          number={i}
           status={channel.status}
           lastKilled={channel.lastKilled}
           cooldown={this.props.cooldown}
+          bossId={this.props.bossId}
         />
       )
     })
