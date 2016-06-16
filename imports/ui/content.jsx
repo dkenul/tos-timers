@@ -13,18 +13,22 @@ export default class Content extends Component {
   }
 
   componentWillReceiveProps(props) {
+    console.log(props.bosses)
+    // this.setState({
+    //   filteredBosses: ((bosses) => {
+    //     let currentBosses = this.state.filteredBosses
+    //
+    //     for (let boss of bosses) {
+    //       let query = !currentBosses.find((b) => b._id === boss._id)
+    //       if (query) currentBosses.push(boss)
+    //     }
+    //
+    //     return currentBosses
+    //   })(props.bosses)
+    // })
+
     this.setState({
-      filteredBosses: ((bosses) => {
-        let currentBosses = this.state.filteredBosses
-
-        for (let boss of bosses) {
-
-          if (!currentBosses.find((b) => b._id === boss._id))
-            currentBosses.push(boss)
-        }
-
-        return currentBosses
-      })(props.bosses)
+      filteredBosses: props.bosses
     })
   }
 
@@ -52,8 +56,8 @@ export default class Content extends Component {
   }
 
   putBosses () {
-    return this.state.filteredBosses.map((boss) => (
-      <Boss key={boss._id} boss={boss} />
+    return this.state.filteredBosses.map((boss, i) => (
+      <Boss key={i} boss={boss} />
     ))
   }
 

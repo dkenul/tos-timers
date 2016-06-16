@@ -10,6 +10,7 @@ export default class Dropdown extends Component {
           number={i + 1}
           status={channel.status}
           lastKilled={channel.lastKilled}
+          cooldown={this.props.cooldown}
         />
       )
     })

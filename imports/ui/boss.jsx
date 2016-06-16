@@ -13,6 +13,16 @@ export default class Boss extends Component {
     this.setState({showDropdown: !this.state.showDropdown})
   }
 
+  renderDropdown () {
+    let boss = this.props.boss
+    return this.state.showDropdown ?
+      <Dropdown
+        channels={boss.channels}
+        cooldown={boss.cooldown}
+      />
+      : ""
+  }
+
   render () {
     let boss = this.props.boss
 
@@ -23,7 +33,7 @@ export default class Boss extends Component {
           <div className="name">{boss.name}</div>
         </div>
 
-        {this.state.showDropdown ? <Dropdown channels={boss.channels} /> : ""}
+        {this.renderDropdown()}
       </li>
     )
   }
