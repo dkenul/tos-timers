@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 import Search from './search.jsx'
-import { createContainer } from 'meteor/react-meteor-data';
-import { Bosses } from '../api/bosses.js';
-import Boss from './boss.jsx';
+import { createContainer } from 'meteor/react-meteor-data'
+import { Bosses } from '../api/bosses.js'
+import Boss from './boss.jsx'
 
 export default class Content extends Component {
   constructor () {
@@ -14,7 +14,17 @@ export default class Content extends Component {
 
   componentWillReceiveProps(props) {
     this.setState({
-      filteredBosses: props.bosses
+      filteredBosses: ((bosses) => {
+        let currentBosses = this.state.filteredBosses
+
+        for (let boss of bosses) {
+
+          if (!currentBosses.find((b) => b._id === boss._id))
+            currentBosses.push(boss)
+        }
+
+        return currentBosses
+      })(props.bosses)
     })
   }
 
@@ -22,12 +32,9 @@ export default class Content extends Component {
     let seg = e.target.value.toLowerCase()
     this.setState({
       filteredBosses: this.props.bosses.reduce((list, boss) => {
-        let query = boss.name.toLowerCase()
+        let query = boss.name.toLowerCase().includes(seg)
 
-        if (query.includes(seg)) {
-          list.push(boss)
-        }
-
+        if (query) list.push(boss)
         return list
       }, [])
     })
@@ -36,9 +43,10 @@ export default class Content extends Component {
   filterByStatus (status, e) {
     this.setState({
       filteredBosses: this.state.filteredBosses.reduce((list, boss) => {
-        if (boss.channels.find((channel) => channel.status === status)) {
-          list.push(boss)
-        }
+        let query = boss.channels.find((channel) => channel.status === status)
+
+        if (query) list.push(boss)
+        return list
       }, [])
     })
   }
@@ -65,10 +73,10 @@ export default class Content extends Component {
 
 Content.propTypes = {
   bosses: PropTypes.array.isRequired
-};
+}
 
 export default createContainer(() => {
   return {
     bosses: Bosses.find({}).fetch()
-  };
-}, Content);
+  }
+}, Content)
